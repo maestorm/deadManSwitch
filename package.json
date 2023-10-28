@@ -1,22 +1,34 @@
 {
-  "name": "email-test-app",
+  "name": "Dead man switch",
   "version": "0.1.0",
   "private": true,
+  "author": "Tomas Bilina",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-docker": "pnpm build && docker build -t deadmanswitch/node-js-image:latest .",
+    "run-docker": "docker run --name nodejs-image-demo -p 8080:3000 -d deadmanswitch/node-js-image"
   },
   "dependencies": {
     "autoprefixer": "10.4.15",
+    "dotenv": "^16.3.1",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "express": "^4.18.2",
+    "googleapis": "^128.0.0",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
     "next": "13.4.19",
-    "nodemailer": "^6.9.5",
+    "node-mailjet": "^6.0.4",
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "20.9.0",
+    "@types/react": "18.2.37"
   }
 }
