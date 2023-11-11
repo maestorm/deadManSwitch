@@ -1,5 +1,6 @@
 "use client"
-import Link from "next/link"
+import '../globals.css';
+import Link from "next/link";
 
 export default function Contact() {
     async function handleSubmit(event) {
@@ -26,7 +27,7 @@ export default function Contact() {
 
     return (
         <main className="flex min-h-screen flex-col items-center" >
-            <div className="relative flex place-items-center p-5 bg-white text-black">
+            <div>
                 <Link href="/">Home</Link>
             </div>
 
@@ -43,7 +44,7 @@ export default function Contact() {
                     <textarea id="form-message" required name="message" rows={5} className="text-black" />
 
                 </div>
-                <button className=" rounded bg-sky-400" type="submit">Send</button>
+                <button type="submit">Send</button>
             </form>
         </main>
     )
