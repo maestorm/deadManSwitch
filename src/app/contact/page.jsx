@@ -2,6 +2,29 @@
 import '../globals.css';
 import Link from "next/link";
 
+import styled from 'styled-components';
+
+const Button = styled('button')({
+    color: '#6f6f6f',
+    background: '#f8f8f8',
+    borderRadius: '4px',
+    padding: '8px 16px',
+    cursor: 'pointer',
+
+    '&:focus, &:hover': {
+        background: '#999999',
+        color: '#fff'
+    }
+});
+
+const Menu = styled('div')({
+    display: 'flex',
+    width: '100%',
+    padding: '8px 24px',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start'
+});
+
 export default function Contact() {
     async function handleSubmit(event) {
         event.preventDefault();
@@ -27,9 +50,9 @@ export default function Contact() {
 
     return (
         <main className="flex min-h-screen flex-col items-center" >
-            <div>
+            <Menu>
                 <Link href="/">Home</Link>
-            </div>
+            </Menu>
 
             <form onSubmit={handleSubmit} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                 <div className="mb-4 flex flex-col w-500">
@@ -44,7 +67,7 @@ export default function Contact() {
                     <textarea id="form-message" required name="message" rows={5} className="text-black" />
 
                 </div>
-                <button type="submit">Send</button>
+                <Button type="submit">Send</Button>
             </form>
         </main>
     )
