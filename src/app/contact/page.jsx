@@ -50,9 +50,9 @@ export default function Contact() {
 
     return (
         <main className="flex min-h-screen flex-col items-center" >
-            <Menu>
+            <div className="menu">
                 <Link href="/">Home</Link>
-            </Menu>
+            </div>
 
             <form onSubmit={handleSubmit} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                 <div className="mb-4 flex flex-col w-500">
