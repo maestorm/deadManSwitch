@@ -17,14 +17,6 @@ const Button = styled('button')({
     }
 });
 
-const Menu = styled('div')({
-    display: 'flex',
-    width: '100%',
-    padding: '8px 24px',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start'
-});
-
 export default function Contact() {
     async function handleSubmit(event) {
         event.preventDefault();
@@ -58,7 +50,7 @@ export default function Contact() {
                 <div className="mb-4 flex flex-col w-500">
 
                     <label htmlFor="form-name">Name </label>
-                    <input id="form-name" autoComplete="name" maxLength={50} size="lg" name="name" className="text-black"/>
+                    <input id="form-name" autoComplete="name" maxLength={50} size={100} name="name" className="text-black"/>
 
                     <label htmlFor="form-email"> Email:</label>
                     <input id="form-email" required autoComplete="email" maxLength={80} name="email" type="email" className="text-black"/>

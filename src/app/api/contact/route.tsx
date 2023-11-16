@@ -1,16 +1,11 @@
 const dotenv = require('dotenv');
-dotenv.config({path:'./config/config.env'}); 
+dotenv.config({path:'../../../.env'});
 
 export async function POST(req) {
     const formData = await req.formData();
     const name = formData.get('name');
     const email = formData.get('email');
     const message = formData.get('message');
-    //Creating an app from express
-    const app = express();
-    
-    //Using express.json to get request of json data
-    app.use(express.json());
 
     const mailjet = require('node-mailjet').apiConnect(
         process.env.MAILJET_API_KEY,
