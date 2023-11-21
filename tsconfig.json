@@ -30,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/index.js"
-  ],
+, "src/pages/_app.js"  ],
   "exclude": [
     "node_modules"
   ]

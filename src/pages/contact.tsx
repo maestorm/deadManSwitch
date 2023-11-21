@@ -1,21 +1,6 @@
-"use client"
-import '../globals.css';
+import './globals.css';
 import Link from "next/link";
-
-import styled from 'styled-components';
-
-const Button = styled('button')({
-    color: '#6f6f6f',
-    background: '#f8f8f8',
-    borderRadius: '4px',
-    padding: '8px 16px',
-    cursor: 'pointer',
-
-    '&:focus, &:hover': {
-        background: '#999999',
-        color: '#fff'
-    }
-});
+import { Button, Menu } from '../components';
 
 export default function Contact() {
     async function handleSubmit(event) {
@@ -42,9 +27,9 @@ export default function Contact() {
 
     return (
         <main className="flex min-h-screen flex-col items-center" >
-            <div className="menu">
+            <Menu>
                 <Link href="/">Home</Link>
-            </div>
+            </Menu>
 
             <form onSubmit={handleSubmit} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                 <div className="mb-4 flex flex-col w-500">
