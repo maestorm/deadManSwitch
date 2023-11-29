@@ -1,30 +1,65 @@
 import './globals.css';
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Menu } from '../components';
-import { connectToDatabase } from '../app/database/mongodb'
+import { Menu, Main } from '../components';
+import { connectToDatabase } from '../app/database/mongodb';
+import { createRecord } from '../app/database/models/client';
+import { useEffect, useState } from 'react';
 
 export const getServerSideProps = async () => {
-    const db = await connectToDatabase();
+    try {
+        const db = await connectToDatabase();
 
-    const collection = db.collection('clients');
-    const allData = await collection.find({}).toArray();
+        const collection = db.collection('clients');
+        const allData = await collection.find({}).toArray();
 
-    console.log('All data from MongoDB:', allData);
+        console.log('All data from MongoDB:', allData);
 
-    return {
-        props: {
-            dataFromMongo: JSON.parse(JSON.stringify(allData)),
-        },
-    };
+        return {
+            props: {
+                dataFromMongo: JSON.parse(JSON.stringify(allData)),
+            },
+        };
+    } catch (err) {
+        return {
+            props: {
+                data: []
+            }
+        }
+    }
 }
 
 const Home = (props) => {
+    const [ clientId, setClientId ] = useState(0); 
     const { data: session } = useSession();
-    console.log('Data from mongodb: ', props);
+    const { data } = useSession();
+    const { dataFromMongo } = props;
+
+    // const removeRecord = async(id) => {
+    //     try {
+    //         const result = await new Client.deleteOne({ _id: id });
+    //         if (result.deletedCount === 1) {
+    //           console.log('Document deleted successfully');
+    //         } else {
+    //           console.log('No document found with the provided ID');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error deleting document:', error);
+    //     }
+    // };
+
+    useEffect(() => {
+        setClientId(previousId => ++previousId);
+    }, []);
+
+    if (session) {
+        createRecord(clientId, data?.user?.name, data?.user?.email);
+    }
+
+    console.log('data, props: ', data, props);
 
     return (
-        <main className="flex min-h-screen flex-col items-center">
+        <Main>
             <Menu>
                 {session ? (
                     <>
@@ -39,7 +74,14 @@ const Home = (props) => {
                     </Link>
                 )}
             </Menu>
-        </main>
+            <section>
+                <ul>
+                    {dataFromMongo.map(id => (
+                        <li key={id._id}>{`name: ${id.name} - email: ${id.email}`}</li>
+                    ))}
+                </ul>
+            </section>
+        </Main>
     )
 }
 

@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 const Button = styled('button')({
-    color: '#6f6f6f',
-    background: '#f8f8f8',
-    borderRadius: '4px',
-    padding: '8px 16px',
-    cursor: 'pointer',
-
-    '&:focus, &:hover': {
-        background: '#999999',
-        color: '#fff'
+    color: '#111',
+    background: '#e5e5e5',
+    border: '1px outset #ccc',
+    padding: '4px 16px',
+    '&:active, &:hover': {
+        background: '#e5e5e5'
+    },
+    '&:active': {
+        border: '1px inset #ccc',
+        background: '#d5d5d5'
     }
 });
 
