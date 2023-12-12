@@ -30,7 +30,7 @@ export const getServerSideProps = async () => {
     }
 }
 
-const Home = (props) => {
+const Management = (props) => {
     const [ clientId, setClientId ] = useState(0); 
     const { data: session } = useSession();
     const { data } = useSession();
@@ -57,7 +57,7 @@ const Home = (props) => {
         createRecord(clientId, data?.user?.name, data?.user?.email);
     }
 
-    console.log('data, props: ', data, props);
+    console.log('props: ', props.dataFromMongo[0]._id);
 
     return (
         <Main>
@@ -78,7 +78,7 @@ const Home = (props) => {
             <section>
                 <ul>
                     {dataFromMongo.map(id => (
-                        <li key={id._id}>{`name: ${id.name} - email: ${id.email}`}</li>
+                        <li key={id._id}>{`id: ${id._id}`}</li>
                     ))}
                 </ul>
             </section>
@@ -86,4 +86,4 @@ const Home = (props) => {
     )
 }
 
-export default Home;
+export default Management;

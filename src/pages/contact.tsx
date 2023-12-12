@@ -5,8 +5,9 @@ import { useEffect } from 'react';
 import { Button, Menu, Main } from '../components';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Header from './header';
 
-export default function Contact() {
+const Contact = () => {
     const { data: session } = useSession();
     const userName = session?.user?.name;
 
@@ -52,7 +53,7 @@ export default function Contact() {
     return (
         <Main>
             <Menu>
-                <Link href="/">Home</Link>
+                <Header />
                 {userName && <Link href="#" onClick={() => signOut({
                     callbackUrl: '/'
                 })}>
@@ -107,3 +108,5 @@ export default function Contact() {
         </Main>
     )
 }
+
+export default Contact;
