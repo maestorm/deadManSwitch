@@ -1,7 +1,6 @@
 import './globals.css';
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { useEffect } from 'react';
 import { Button, Menu, Main } from '../components';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -17,24 +16,18 @@ const Contact = () => {
         message: '',
     };
 
-    useEffect(() => {
-        // createRecord
-    }, []);
-
     async function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
 
-        console.log('formData: ', formData);
         try {
             const response = await fetch('/api/contact', {
                 method: 'post',
                 body: formData,
             });
 
-            console.log("response: ", response);
             if (!response.ok) {
-                console.log("falling over")
+                console.log("falling over");
                 throw new Error(`response status: ${response.status}`);
             }
             const responseData = await response.json();

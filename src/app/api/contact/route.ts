@@ -1,7 +1,9 @@
-const dotenv = require('dotenv');
+import { connectToDatabase } from '../../database/mongodb';
+import dotenv from 'dotenv';
 dotenv.config({path:'../../../.env'});
 
 export async function POST(req) {
+    const db = await connectToDatabase();
     const formData = await req.formData();
     const name = formData.get('name');
     const email = formData.get('email');
@@ -30,6 +32,18 @@ export async function POST(req) {
         }]
     })
     request.then(result => {
+        try {
+            const result = db.collection('clients').insertOne({
+                name: email.split('@')[0].replace(/[_\.-]/g, ' '),
+                email,
+                message
+            });
+            
+            console.log(JSON.stringify(result));
+        } catch (error) {
+            console.log({ error: 'Error updating the post' });
+        }
+
         console.log(result.body);
     }).catch(err => {
         console.log(err);

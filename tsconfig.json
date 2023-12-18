@@ -31,7 +31,8 @@
     "**/*.tsx",
     "src/components/index.js",
     "src/pages/_app.js",
-    "dist/types/**/*.ts"
+    "dist/types/**/*.ts",
+    "src/app/database/models/client.ts"
   ],
   "exclude": [
     "node_modules"
