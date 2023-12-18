@@ -33,13 +33,16 @@ export async function POST(req) {
     })
     request.then(result => {
         try {
-            const result = db.collection('clients').insertOne({
-                name: email.split('@')[0].replace(/[_\.-]/g, ' '),
-                email,
-                message
-            });
+            const isStored = db.collection('clients').findOne({ email });
+            if(!isStored) {
+                const result = db.collection('clients').insertOne({
+                    name: email.split('@')[0].replace(/[_\.-]/g, ' '),
+                    email,
+                    message
+                });
             
-            console.log(JSON.stringify(result));
+                console.log(JSON.stringify(result));
+            }
         } catch (error) {
             console.log({ error: 'Error updating the post' });
         }
