@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const Main = styled('div')({
   display: 'flex',
   flexDirection: 'column',
+  margin: '0 -8px',
+  fontFamily: 'sans-serif',
 
   form: {
     display: 'flex',
