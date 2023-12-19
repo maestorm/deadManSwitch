@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 const Main = styled('div')({
+  background: '#D3E8EE',
   display: 'flex',
   flexDirection: 'column',
-  margin: '0 -8px',
+  margin: '-8px',
   fontFamily: 'sans-serif',
+  height: '100vh',
 
   form: {
     display: 'flex',
