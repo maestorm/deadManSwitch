@@ -1,44 +1,44 @@
 import './globals.css';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 import { Menu, Main } from '../components';
 import { connectToDatabase } from '../app/database/mongodb';
-import { useEffect, useState } from 'react';
 import Header from './header';
 
 export const getServerSideProps = async () => {
   try {
     const db = await connectToDatabase();
 
-    const collection = db.collection( 'clients' );
-    const allData = await collection.find( {} ).toArray();
+    const collection = db.collection('clients');
+    const allData = await collection.find({}).toArray();
 
     return {
       props: {
-        dataFromMongo: JSON.parse( JSON.stringify( allData ) ),
+        dataFromMongo: JSON.parse(JSON.stringify(allData)),
       },
     };
-  } catch ( err ) {
+  } catch (err) {
     return {
       props: {
-        data: []
-      }
+        data: [],
+      },
     };
   }
 };
 
-const Management = ( props ) => {
-  const [ clientId, setClientId ] = useState( 0 ); 
+function Management(props) {
+  const [clientId, setClientId] = useState(0);
   const { data: session } = useSession();
   const { data } = useSession();
   const { dataFromMongo } = props;
-  console.log( 'management data, clientId: ', data, clientId );
+  console.log('management data, clientId: ', data, clientId);
 
-  useEffect( () => {
-    setClientId( previousId => ++previousId );
-  }, [] );
+  useEffect(() => {
+    setClientId((previousId) => ++previousId);
+  }, []);
 
-  console.log( 'management props.dataFromMongo: ', props.dataFromMongo );
+  console.log('management props.dataFromMongo: ', props.dataFromMongo);
 
   return (
     <Main>
@@ -47,24 +47,24 @@ const Management = ( props ) => {
           <>
             <Header />
             <Link href="#" onClick={() => signOut()}>
-                            Sign out
+              Sign out
             </Link>
           </>
         ) : (
           <Link href="#" onClick={() => signIn()}>
-                        Sign in
+            Sign in
           </Link>
         )}
       </Menu>
       <section>
         <ul>
-          {dataFromMongo.map( id => (
-            <li key={id._id}>{`id: ${id._id}`}</li>
-          ) )}
+          {dataFromMongo.map((id) => (
+            <li key={id._id}>{`id: ${ id._id }`}</li>
+          ))}
         </ul>
       </section>
     </Main>
   );
-};
+}
 
 export default Management;

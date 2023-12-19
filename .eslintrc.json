@@ -1,13 +1,14 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "indent": ["error", 2],
-    "semi": ["error", "always"],
-    "quotes": ["error", "single"],
-    "comma-spacing": ["error", { "before": false, "after": true }],
-    "array-bracket-spacing": ["error", "always"],
-    "object-curly-spacing": ["error", "always"],
-    "space-before-function-paren": ["error", "always"],
-    "space-in-parens": ["error", "always"]
-  }
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended"
+    ],
+    "rules": {
+        "indent": ["error", 2],
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-curly-spacing": ["error", { "when": "never", "children": true }],
+        "template-curly-spacing": ["error", "always"]
+    }
 }

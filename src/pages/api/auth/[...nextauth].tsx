@@ -1,22 +1,23 @@
-const dotenv = require( 'dotenv' );
-dotenv.config( { path:'../../../.env' } );
-
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '../../../.env' });
 export const authOptions: NextAuthOptions = {
   secret: process.env.CLIENT_SECRET,
   providers: [
-    GoogleProvider( {
+    GoogleProvider({
       clientId: process.env.CLIENT_ID as string,
       clientSecret: process.env.CLIENT_SECRET as string,
       authorization: {
         params: {
           prompt: 'consent',
           access_type: 'offline',
-          response_type: 'code'
-        }
+          response_type: 'code',
+        },
       },
-    } ),
+    }),
   ],
   session: {
     strategy: 'jwt',
@@ -24,4 +25,4 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-export default NextAuth( authOptions );
+export default NextAuth(authOptions);

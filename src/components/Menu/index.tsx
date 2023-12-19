@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Menu = styled( 'div' )( {
+const Menu = styled('div')({
   background: '#ececec',
   display: 'flex',
   width: '100%',
@@ -8,9 +8,9 @@ const Menu = styled( 'div' )( {
   padding: '8px 16px',
   justifyContent: 'space-between',
   'a:not("last-of-type")': {
-    marginRight: '24px'
+    marginRight: '24px',
   },
-  'a': {
+  a: {
     color: '#222',
     borderWidth: '1px',
     borderStyle: 'outset',
@@ -19,13 +19,13 @@ const Menu = styled( 'div' )( {
     '&:focus, &:hover': {
       background: '#fafafa',
       border: '1px inset #ccc',
-      color: '#222'
+      color: '#222',
     },
     '&:active': {
       background: '#fff',
-      color: '#111'
-    }
-  }
-} );
+      color: '#111',
+    },
+  },
+});
 
 export default Menu;

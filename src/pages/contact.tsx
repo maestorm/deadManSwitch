@@ -1,12 +1,14 @@
 import './globals.css';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
-import { Button, Menu, Main } from '../components';
 import * as Yup from 'yup';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
+import { Button, Menu, Main } from '../components';
 import Header from './header';
 
-const Contact = () => {
+function Contact() {
   const { data: session } = useSession();
   const userName = session?.user?.name;
 
@@ -16,42 +18,47 @@ const Contact = () => {
     message: '',
   };
 
-  async function handleSubmit ( event ) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData( event.target );
+    const formData = new FormData(event.target);
 
     try {
-      const response = await fetch( '/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'post',
         body: formData,
-      } );
+      });
 
-      if ( !response.ok ) {
-        console.log( 'falling over' );
-        throw new Error( `response status: ${response.status}` );
+      if (!response.ok) {
+        console.log('falling over');
+        throw new Error(`response status: ${ response.status }`);
       }
       const responseData = await response.json();
-      console.log( 'responseData: ', responseData['message'] );
-    } catch ( err ) {
-      console.error( err );
+      console.log('responseData: ', responseData.message);
+    } catch (err) {
+      console.error(err);
     }
-  };
+  }
 
-  const validationSchema = Yup.object().shape( {
-    name: Yup.string().required( 'Name is required' ),
-    email: Yup.string().email( 'Invalid email' ).required( 'Email is required' ),
-    message: Yup.string().required( 'Message is required' ),
-  } );
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    message: Yup.string().required('Message is required'),
+  });
 
   return (
     <Main>
       <Menu>
         <Header />
-        {userName && <Link href="#" onClick={() => signOut( {
-          callbackUrl: '/'
-        } )}>
-                    Sign out
-        </Link>}
+        {userName && (
+          <Link
+            href="#"
+            onClick={() => signOut({
+              callbackUrl: '/',
+            })}
+          >
+            Sign out
+          </Link>
+        )}
       </Menu>
 
       <Formik
@@ -100,6 +107,6 @@ const Contact = () => {
       </Formik>
     </Main>
   );
-};
+}
 
 export default Contact;

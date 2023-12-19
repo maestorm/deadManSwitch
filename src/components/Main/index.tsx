@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-const Main = styled( 'div' )( {
+const Main = styled('div')({
   display: 'flex',
   flexDirection: 'column',
 
-  'form': {
+  form: {
     display: 'flex',
     minWidth: '100%',
     flexDirection: 'column',
     padding: '0 16px',
 
-    'button': {
-      width: '150px'
+    button: {
+      width: '150px',
     },
 
     'input, textarea': {
@@ -19,14 +19,14 @@ const Main = styled( 'div' )( {
 
       '&:focus-visible': {
         background: '#fff',
-        outlineColor: '#ccc'
-      }
-    }
+        outlineColor: '#ccc',
+      },
+    },
   },
 
-  'section': {
-    padding: '0 16px'
-  }
-} );
+  section: {
+    padding: '0 16px',
+  },
+});
 
 export default Main;

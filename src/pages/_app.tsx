@@ -2,10 +2,11 @@ import React from 'react';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 
-export default function App ( {
+export default function App({
   Component,
   pageProps: { session, ...pageProps },
-}: AppProps ) {
+}: AppProps) {
+  console.log(session);
   return (
     <SessionProvider session={pageProps.session}>
       <Component {...pageProps} />
