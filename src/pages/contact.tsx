@@ -7,7 +7,7 @@ import {
 import { Button, Menu, Main } from '../components';
 import Header from './header';
 
-function Contact() {
+export const Contact = () => {
   const { data: session } = useSession();
   const userName = session?.user?.name;
 
@@ -65,8 +65,8 @@ function Contact() {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form onSubmit={handleSubmit} className="mt-4 mb-2 w-80 max-w-screen-lg sm:w-96">
-          <div className="mb-4 flex flex-col w-500">
+        <Form onSubmit={handleSubmit}>
+          <div>
             <label htmlFor="form-name">Name</label>
             <Field
               id="form-name"
@@ -74,9 +74,8 @@ function Contact() {
               maxLength={50}
               size={100}
               name="name"
-              className="text-black"
             />
-            <ErrorMessage name="name" component="div" className="text-red-600" />
+            <ErrorMessage name="name" component="div" />
 
             <label htmlFor="form-email">Email:</label>
             <Field
@@ -86,9 +85,8 @@ function Contact() {
               maxLength={80}
               name="email"
               type="email"
-              className="text-black"
             />
-            <ErrorMessage name="email" component="div" className="text-red-600" />
+            <ErrorMessage name="email" component="div" />
 
             <label htmlFor="form-message">Message:</label>
             <Field
@@ -97,9 +95,8 @@ function Contact() {
               name="message"
               rows={5}
               as="textarea"
-              className="text-black"
             />
-            <ErrorMessage name="message" component="div" className="text-red-600" />
+            <ErrorMessage name="message" component="div" />
           </div>
           <Button type="submit">Send</Button>
         </Form>

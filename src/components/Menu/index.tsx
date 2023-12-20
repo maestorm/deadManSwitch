@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Menu = styled('div')({
-  background: '#98C9D7',
+  background: '#adcfe6',
   display: 'flex',
   width: '100%',
   margin: '16px 0',
@@ -10,7 +10,7 @@ const Menu = styled('div')({
     marginRight: '24px',
   },
   a: {
-    background: '#7BBACC',
+    background: '#9bc6e3',
     color: '#1A414C',
     borderWidth: '1px',
     borderRadius: '4px',
