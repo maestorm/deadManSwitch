@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
 const Menu = styled('div')({
-  background: '#adcfe6',
+  background: '#b5d8ed',
   display: 'flex',
   width: '100%',
   margin: '16px 0',
+  borderTop: '1px solid #436877',
+  borderBottom: '1px solid #dbedf5',
   padding: '8px 0',
   'a:not("last-of-type")': {
     marginRight: '24px',
   },
   a: {
-    background: '#9bc6e3',
+    background: '#8bb9d3',
     color: '#1A414C',
     borderWidth: '1px',
     borderRadius: '4px',

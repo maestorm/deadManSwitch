@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import * as Yup from 'yup';
 import {
-  Formik, Form, Field, ErrorMessage,
+  Formik, Form, ErrorMessage,
 } from 'formik';
-import { Button, Menu, Main } from '../components';
+import { Submit, Menu, Main, StyledField } from '../components';
 import Header from './header';
 
 export const Contact = () => {
@@ -39,9 +39,9 @@ export const Contact = () => {
   }
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Name is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    message: Yup.string().required('Message is required'),
+    name: Yup.string().required('Name is required!'),
+    email: Yup.string().email('Invalid email').required('Email is required!'),
+    message: Yup.string().required('Message is required!'),
   });
 
   return (
@@ -68,7 +68,7 @@ export const Contact = () => {
         <Form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="form-name">Name</label>
-            <Field
+            <StyledField
               id="form-name"
               autoComplete="name"
               maxLength={50}
@@ -78,7 +78,7 @@ export const Contact = () => {
             <ErrorMessage name="name" component="div" />
 
             <label htmlFor="form-email">Email:</label>
-            <Field
+            <StyledField
               id="form-email"
               required
               autoComplete="email"
@@ -89,7 +89,7 @@ export const Contact = () => {
             <ErrorMessage name="email" component="div" />
 
             <label htmlFor="form-message">Message:</label>
-            <Field
+            <StyledField
               id="form-message"
               required
               name="message"
@@ -98,7 +98,7 @@ export const Contact = () => {
             />
             <ErrorMessage name="message" component="div" />
           </div>
-          <Button type="submit">Send</Button>
+          <Submit type="submit">Send</Submit>
         </Form>
       </Formik>
     </Main>
