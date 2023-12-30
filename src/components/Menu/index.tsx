@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Menu = styled('div')({
-  background: '#b5d8ed',
+  background: '#c7d5de',
   display: 'flex',
   width: '100%',
   margin: '16px 0',
@@ -12,19 +12,19 @@ const Menu = styled('div')({
     marginRight: '24px',
   },
   a: {
-    background: '#8bb9d3',
+    background: '#d0dde6',
     color: '#1A414C',
     borderWidth: '1px',
     borderRadius: '4px',
     borderStyle: 'outset',
     margin: '0 16px', 
-    borderColor: '#98C9D7',
+    borderColor: '#e1f3f8',
     textDecoration: 'none',
     padding: '4px 16px',
     transition: 'background-color 0.25s linear, border-color 0.3s linear',
     '&:focus, &:hover': {
-      background: '#D3E8EE',
-      border: '1px inset #D3E8EE',
+      background: '#f0f8fd',
+      border: '1px inset #f0f8fd',
       color: '#224C58',
     },
     '&:active': {

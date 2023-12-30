@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { connectToDatabase } from '../../database/mongodb';
+import mailjet from 'node-mailjet';
 
 dotenv.config({ path: '../../../.env' });
 
@@ -10,12 +11,12 @@ export async function POST(req) {
   const email = formData.get('email');
   const message = formData.get('message');
 
-  const mailjet = require('node-mailjet').apiConnect(
-    process.env.MAILJET_API_KEY,
-    process.env.MAILJET_API_SECRET,
+  const mailjetInstance = mailjet.apiConnect(
+    process.env.MAILJET_API_KEY ?? '',
+    process.env.MAILJET_API_SECRET ?? '',
   );
 
-  const request = mailjet.post('send', { version: 'v3.1' }).request({
+  const request = mailjetInstance.post('send', { version: 'v3.1' }).request({
     Messages: [{
       From: {
         Email: process.env.MAILJET_API_EMAIL,
