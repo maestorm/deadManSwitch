@@ -42,18 +42,7 @@ function Management(props) {
   return (
     <Main>
       <Menu>
-        {session ? (
-          <>
-            <Header />
-            <Link href="#" onClick={() => signOut()}>
-              Sign out
-            </Link>
-          </>
-        ) : (
-          <Link href="#" onClick={() => signIn()}>
-            Sign in
-          </Link>
-        )}
+        <Header isSigned={!!session} signOut={signOut} />
       </Menu>
       <section>
         <ul>

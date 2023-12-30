@@ -47,17 +47,7 @@ export const Contact = () => {
   return (
     <Main>
       <Menu>
-        <Header />
-        {userName && (
-          <Link
-            href="#"
-            onClick={() => signOut({
-              callbackUrl: '/',
-            })}
-          >
-            Sign out
-          </Link>
-        )}
+        <Header isSigned={!!userName} signOut={signOut} />
       </Menu>
 
       <Formik

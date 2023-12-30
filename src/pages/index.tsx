@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { Menu, Main } from '../components';
@@ -39,18 +38,7 @@ function Home(props) {
   return (
     <Main>
       <Menu>
-        {session ? (
-          <>
-            <Header />
-            <Link href="#" onClick={() => signOut()}>
-              Sign out
-            </Link>
-          </>
-        ) : (
-          <Link href="#" onClick={() => signIn()}>
-            Sign in
-          </Link>
-        )}
+        <Header isSigned={!!session} signOut={signOut} signIn={signIn} />
       </Menu>
       <section>
         <ul>
