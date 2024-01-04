@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { Menu, Main } from '../components';
 import { connectToDatabase } from '../app/database/mongodb';
@@ -26,7 +25,7 @@ export const getServerSideProps = async () => {
   }
 };
 
-function Management(props) {
+const Management = (props) => {
   const [clientId, setClientId] = useState(0);
   const { data: session } = useSession();
   const { data } = useSession();

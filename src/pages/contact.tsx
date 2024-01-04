@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import * as Yup from 'yup';
 import {
